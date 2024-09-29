@@ -3,7 +3,7 @@ import os
 import waymore
 import gau_python
 # Define the target domain
-target_domain = "blackhatethicalhacking.com"
+target_domain = "blackhatethicalhacking.com" #any domain
 
 # Define file paths to store results
 gau_output = f"{target_domain}_gau.txt"
