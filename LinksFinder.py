@@ -21,6 +21,16 @@ def run_command(command, output_file):
         else:
             print(f"Command executed successfully. Output saved to {output_file}")
 
+# 1. Run GAU (Get All URLs)*
+print(f"Running GAU for {target_domain}...")
+gau_command = f"gau {target_domain}"
+run_command(gau_command, gau_output)
+
+# Check if GAU output is empty
+if os.path.getsize(gau_output) == 0:
+    print("GAU command did not produce any output.")
+else:
+    print("GAU output saved successfully.")
 
 # 2. Run Waymore
 print(f"Running Waymore for {target_domain}...")
@@ -33,7 +43,38 @@ if os.path.getsize(waymore_output) == 0:
 else:
     print("Waymore output saved successfully.")
 
-#Gau&Linkifnder here
+# Combine URLs from gau and waymore
+combined_urls = f"{target_domain}_combined_urls.txt"
+with open(combined_urls, "w") as outfile:
+    for fname in [gau_output, waymore_output]:
+        with open(fname) as infile:
+            outfile.write(infile.read())
+
+# Check if Combined URLs file is empty
+if os.path.getsize(combined_urls) == 0:
+    print("No combined URLs found.")
+else:
+    print("Combined URLs file created successfully.")
+
+# 3. Extract JavaScript files from combined URLs
+print("Extracting JavaScript files...")
+js_files_command = f"grep -E '\\.js($|\\?)' {combined_urls} | sort -u"
+run_command(js_files_command, js_files_output)
+
+# Check if JavaScript files output is empty
+if os.path.getsize(js_files_output) == 0:
+    print("No JavaScript files found.")
+else:
+    print("JavaScript files extracted successfully.")
+
+# 4. Run LinkFinder on each JavaScript file*
+print("Running LinkFinder on JavaScript files...")
+with open(js_files_output, "r") as js_files:
+    for js_file in js_files:
+        js_file = js_file.strip()
+        linkfinder_command = f"linkfinder -i {js_file} -o cli "
+        print(f"Processing {js_file}...")
+        run_command(linkfinder_command, linkfinder_output)
 
 
 
