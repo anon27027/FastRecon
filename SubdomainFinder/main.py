@@ -39,12 +39,11 @@ def get_subdomains(domain):
     temp_dir = tempfile.mkdtemp()
 
     tools = [
-        ('python3 Installations/Sublist3r/sublist3r.py -d', os.path.join(temp_dir, 'sublist3r_output.txt')),
         ('amass enum -passive -d', os.path.join(temp_dir, 'amass_output.txt')),
         ('findomain -t', os.path.join(temp_dir, 'findomain_output.txt')),
         ('subfinder -d', os.path.join(temp_dir, 'subfinder_output.txt')),
         ('chaos -d', os.path.join(temp_dir, 'chaos_output.txt')),
-        ('bbot', os.path.join(temp_dir, 'bbot_output.txt'))
+        ('bbot ', os.path.join(temp_dir, 'bbot_output.txt'))
     ]
 
     for command, output_file in tools:

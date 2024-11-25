@@ -2,4 +2,5 @@
 
 ip_address=$1
 
-naabu "$ip_address" -tp -oN /dev/stdout
+# Correct the command by removing the -oN flag and specifying a file for output
+naabu -host "$ip_address" -o /dev/stdout

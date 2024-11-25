@@ -24,8 +24,8 @@ def run_nmap_port(ip_list_file):
     return result.stdout
 
 def run_naabu_port(ipaddress):
+    # Run the naabu scan with the corrected script and output handling
     result = subprocess.run(['PortScanner/Script/fastPorts.sh', ipaddress], capture_output=True, text=True)
-
     return result.stdout
 
 def extract_ports(nmap_output):
@@ -70,34 +70,38 @@ def process_nmap(host):
 
 
 def save_log(hosts):
-    def sanitize(value):        
-        if isinstance(value, str):
-            return ''.join(c if c.isprintable() else '' for c in value) 
-        return value
-
-    max_pairs = max(len(ports) for ports in result.values())
+    if result == {}:
+        print("No Open Ports Found")
     
-    current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    hostsUp_output_file = f"logs/{args.ip}/hosts_up_{current_time}.txt"
-    openPorts_output_file = f"logs/{args.ip}/PortScanner_{current_time}.csv"
+    else:
+        def sanitize(value):        
+            if isinstance(value, str):
+                return ''.join(c if c.isprintable() else '' for c in value) 
+            return value
 
-    with open(openPorts_output_file, mode='w', newline='') as file:
-        writer = csv.writer(file)
+        max_pairs = max(len(ports) for ports in result.values())
         
-        # Add header to CSV
-        writer.writerow(["IP Address"] + ["Port", "Protocol"] * max_pairs)
-        
-        # Write data rows
-        for ip, ports in result.items():
-            row = [ip]  # Start with the IP address
-            for port, protocol in ports.items():
-                row.extend([port, sanitize(protocol)])  # Add sanitized protocol
-            writer.writerow(row)
+        current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        hostsUp_output_file = f"logs/{args.ip}/hosts_up_{current_time}.txt"
+        openPorts_output_file = f"logs/{args.ip}/PortScanner_{current_time}.csv"
 
-    with open(hostsUp_output_file, "w") as file:
-        for host in hosts:
-            file.write(f"{host}\n")
-    print(f"Logs saved to {hostsUp_output_file} and {openPorts_output_file}")    
+        with open(openPorts_output_file, mode='w', newline='') as file:
+            writer = csv.writer(file)
+            
+            # Add header to CSV
+            writer.writerow(["IP Address"] + ["Port", "Protocol"] * max_pairs)
+            
+            # Write data rows
+            for ip, ports in result.items():
+                row = [ip]  # Start with the IP address
+                for port, protocol in ports.items():
+                    row.extend([port, sanitize(protocol)])  # Add sanitized protocol
+                writer.writerow(row)
+
+        with open(hostsUp_output_file, "w") as file:
+            for host in hosts:
+                file.write(f"{host}\n")
+        print(f"Logs saved to {hostsUp_output_file} and {openPorts_output_file}")    
 
 
 parser = argparse.ArgumentParser(description='Scan IP Range and Scan Type Needed as Arguments')
