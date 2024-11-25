@@ -1,0 +1,2 @@
+ec2-44-228-249-3.us-west-2.compute.amazonaws.com
+www.ec2-44-228-249-3.us-west-2.compute.amazonaws.com

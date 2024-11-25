@@ -1,0 +1,19 @@
+
+Performing IP reputation lookup for: vulnweb.com
+[+] Resolved Domain vulnweb.com to IP: 44.228.249.3
+
+AbuseIPDB Reputation Data:
+ipAddress: 44.228.249.3
+isPublic: True
+ipVersion: 4
+isWhitelisted: None
+abuseConfidenceScore: 0
+countryCode: US
+usageType: Data Center/Web Hosting/Transit
+isp: Amazon.com, Inc.
+domain: amazon.com
+hostnames: ['ec2-44-228-249-3.us-west-2.compute.amazonaws.com']
+isTor: False
+totalReports: 0
+numDistinctUsers: 0
+lastReportedAt: None

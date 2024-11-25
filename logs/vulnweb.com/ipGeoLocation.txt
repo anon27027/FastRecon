@@ -1,0 +1,17 @@
+
+Performing IP geolocation lookup for: vulnweb.com
+[+] Resolved Domain vulnweb.com to IP: 44.228.249.3
+
+Geolocation Data:
+ip: 44.228.249.3
+country_code: US
+country_name: United States of America
+region_name: Oregon
+city_name: Boardman
+latitude: 45.83986
+longitude: -119.70058
+zip_code: 97818
+time_zone: -08:00
+asn: 16509
+as: Amazon.com Inc.
+is_proxy: False

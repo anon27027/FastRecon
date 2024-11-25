@@ -1,0 +1,4 @@
+
+Performing screenshot capture for: vulnweb.com
+[+] Running Eyewitness for screenshot capture...
+Eyewitness screenshot captured for vulnweb.com.

@@ -1,0 +1,9 @@
+http://vulnweb.com/wp-content/themes/twentyeleven/js/html5.js
+http://vulnweb.com/wp-includes/js/comment-reply.min.js?ver=2925
+http://vulnweb.com/wp-includes/js/comment-reply.min.js?ver=7504
+http://vulnweb.com/wp-includes/js/comment-reply.min.js?ver=8856
+http://vulnweb.com/wp-includes/js/jquery/jquery.js?ver=1.8.3
+http://vulnweb.com/wp-includes/js/thickbox/thickbox.js?ver=3.1-20121105
+http://www.vulnweb.com/usr/themes/lanstar-master/assets/js/gazeimg.js
+http://www.vulnweb.com/usr/themes/lanstar-master/assets/js/lanstarApp.js
+http://www.vulnweb.com/usr/themes/lanstar-master/assets/js/page.js
