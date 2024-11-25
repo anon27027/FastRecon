@@ -21,7 +21,6 @@ os.makedirs(os.path.dirname(gau_output), exist_ok=True)
 
 with open(gau_output, 'w') as file:
     file.write("")  # Optionally, you can leave this empty or add a header text
-print(f"File {gau_output} created.")
 
 def run_command(command, output_file):
     result = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -30,7 +29,7 @@ def run_command(command, output_file):
     
     if result.stdout:
         # Save the output to the file if there's any content
-        with open(output_file, "w+") as file:
+        with open(output_file, "w") as file:
             file.write(result.stdout.decode())
         print(f"Command executed successfully. Output saved to {output_file}")
     else:

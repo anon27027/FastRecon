@@ -79,16 +79,6 @@ def install_massdns():
         run_command(f"git clone https://github.com/blechschmidt/massdns.git {INSTALL_DIR}/massdns")
         run_command(f"cd {INSTALL_DIR}/massdns && make && sudo cp bin/massdns /usr/local/bin/")
 
-def install_gau():
-    """Install GAU."""
-    print("Installing GAU...")
-    if not os.path.exists(f"{INSTALL_DIR}/gau"):
-        run_command(f"git clone https://github.com/lc/gau {INSTALL_DIR}/gau")
-        run_command(f"cd {INSTALL_DIR}/gau/cmd/gau && go build")
-        print("[+] GAU installed successfully.")
-    else:
-        print("[*] GAU is already installed.")
-
 def install_linkfinder():
     """Install LinkFinder."""
     print("Installing LinkFinder...")
@@ -124,7 +114,6 @@ def main():
     install_chaos_client()
     install_bbot()
     install_massdns()
-    install_gau()
     install_linkfinder()
     install_nmap()  # Added Nmap installation
     install_naabu()  # Added Naabu installation

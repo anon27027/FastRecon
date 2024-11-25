@@ -10,6 +10,8 @@ PYTHON_MODULES=(
     "requests"
     "argparse"
     "whois"
+    "waymore"
+    "gau-python"
 )
 
 # Function to check if a command exists
@@ -25,7 +27,7 @@ install_python_modules() {
     for module in "${PYTHON_MODULES[@]}"; do
         pip show "$module" >/dev/null 2>&1
         if [ $? -ne 0 ]; then
-            pip install "$module" || { echo "[!] Failed to install Python module: $module."; exit 1; }
+            sudo pip install "$module" || { echo "[!] Failed to install Python module: $module."; exit 1; }
             echo "[+] Installed Python module: $module" | tee -a "$LOG_FILE"
         else
             echo "[*] Python module '$module' is already installed." | tee -a "$LOG_FILE"
@@ -41,11 +43,6 @@ fi
 
 # Install Python dependencies
 install_python_modules
-
-# Install Waymore, GAU, and LinkFinder
-install_waymore
-install_gau
-install_linkfinder
 
 echo "[+] All installations completed successfully."
 # Call the Python script
